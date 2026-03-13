@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Service Details</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+    <style>
+        /* Sleek Header Styling */
+        .service-header-solid {
+            padding: 24px;
+            padding-top: max(24px, env(safe-area-inset-top));
+            padding-bottom: 40px;
+            color: white;
+            position: relative;
+        }
+
+        .header-top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .top-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .top-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .header-category {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            align-self: flex-start;
+        }
+
+        .header-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+
+        .header-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-meta-item.rating i {
+            color: #fbbf24;
+        }
+
+        /* Detail Body */
+        .detail-body {
+            padding: 24px;
+            padding-bottom: 120px;
+            /* space for sticky footer */
+            background: var(--bg-white);
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            margin-top: -24px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .provider-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--bg-light);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            border: 1px solid var(--icon-bg-gray);
+        }
+
+        .provider-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color, #2563eb);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .provider-info h3 {
+            margin: 0 0 4px 0;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .provider-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .description-text {
+            color: var(--text-medium);
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            background: var(--bg-light);
+            padding: 10px 12px;
+            border-radius: 12px;
+        }
+
+        .features-list li i {
+            color: #10b981;
+        }
+
+        /* Sticky Footer */
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 20px 24px;
+            padding-bottom: max(20px, env(safe-area-inset-bottom));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+            z-index: 100;
+        }
+
+        .price-display {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-bottom: 2px;
+        }
+
+        .price-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+        }
+
+        .btn-book {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-book:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-book:active {
+            transform: translateY(0);
+        }
+
+        /* Catalog Horizontal Grid Layout */
+        .catalog-slider-container {
+            position: relative;
+            width: calc(100% + 48px); 
+            margin-left: -24px;
+            padding: 0 24px;
+            margin-top: 24px;
+        }
+        .catalog-grid {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-flow: column;
+            grid-auto-columns: calc(50% - 8px); /* mobile: 2 items */
+            gap: 16px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 16px;
+            scrollbar-width: none;
+        }
+        .catalog-grid::-webkit-scrollbar { display: none; }
+        
+        @media (min-width: 1024px) {
+            .catalog-grid {
+                grid-auto-columns: calc(25% - 12px); /* desktop: 4 items */
+            }
+        }
+        
+        .product-card {
+            background: var(--bg-white);
+            border: 1px solid var(--icon-bg-gray);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .product-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+        .product-card p {
+            margin: 0 0 16px 0;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+        .product-card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .product-price {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+        .btn-add-product {
+            background: white;
+            color: var(--primary-color, #2563eb);
+            border: 1px solid var(--primary-color, #2563eb);
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-add-product.added {
+            background: var(--primary-color, #2563eb);
+            color: white;
+            pointer-events: none;
+            border-color: var(--primary-color, #2563eb);
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--icon-bg-gray);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 10;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-dark);
+        }
+        .scroll-left { left: 8px; }
+        .scroll-right { right: 8px; }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="serviceDetailsContainer">
+        <!-- Loader during generation -->
+        <div style="text-align: center; padding: 100px; color: #6b7280;">
+            <i class="fa-solid fa-circle-notch fa-spin fa-2x"></i>
+            <p style="margin-top: 10px;">Loading service details...</p>
+        </div>
+    </div>
+
+    <!-- Data generation script -->
+    <script src="data.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('id');
+            const container = document.getElementById('serviceDetailsContainer');
+
+            // Flatten all services to find by ID easily
+            let allServices = [];
+            if (window.appData && window.appData.services) {
+                for (const cat in window.appData.services) {
+                    allServices = allServices.concat(window.appData.services[cat]);
+                }
+            }
+
+            const service = allServices.find(s => s.id === serviceId) || window.appData?.featuredServices?.find(s => s.id === serviceId);
+
+            if (!service) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: #6b7280; padding-top: 100px;">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 3rem; margin-bottom: 16px; color: #ef4444;"></i>
+                        <h3 style="color: #0f172a;">Service Not Found</h3>
+                        <p>We couldn't find the details for this service.</p>
+                        <a href="index.html" class="btn" style="margin-top: 16px; display: inline-block; padding: 10px 20px; background: var(--primary-color, #2563eb); color: white; border-radius: 8px; text-decoration: none;">Go Home</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Extract initials for the provider avatar from the title instead since provider was removed from data.js
+            const providerInitials = service.title.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
+
+            // Build Catalog HTML if Product
+            let catalogHtml = '';
+            if (service.isProduct && service.catalog && service.catalog.length > 0) {
+                let cardsHtml = '';
+                service.catalog.forEach(item => {
+                    const primaryColor = service.colorInfo?.text || '#2563eb';
+                    cardsHtml += `
+                        <div class="product-card">
+                            <h4>${item.name}</h4>
+                            <p>${item.description}</p>
+                            <div class="product-card-bottom">
+                                <span class="product-price">${item.price}</span>
+                                <button class="btn-add-product" style="color: ${primaryColor}; border-color: ${primaryColor};" 
+                                        onclick="this.classList.add('added'); this.style.background='${primaryColor}'; this.style.color='white'; this.innerText='Added';">Add</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                catalogHtml = `
+                    <div style="margin-top: 32px; border-top: 1px solid var(--icon-bg-gray); padding-top: 24px;">
+                        <h2 class="section-title" style="margin-bottom: 8px;">Available Products</h2>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 0;">Add items to your cart before booking.</p>
+                        <div class="catalog-slider-container">
+                            <button class="scroll-btn scroll-left" onclick="document.getElementById('catalogGrid').scrollBy({left: -200, behavior: 'smooth'})"><i class="fa-solid fa-chevron-left"></i></button>
+                            <div class="catalog-grid" id="catalogGrid">
+                                ${cardsHtml}
+                            </div>
+                            <button class="scroll-btn scroll-right" onclick="document.getElementById('catalogGrid').scrollBy({left: 200, behavior: 'smooth'})"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Render Service Detail
+            container.innerHTML = `
+                <!-- Image Banner Header Section -->
+                <div class="service-header-solid" style="background: url('${service.image}') center/cover no-repeat; position: relative; color: white;">
+                    <!-- Dark Gradient Overlay for text readability -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);"></div>
+                    
+                    <div class="header-top-bar" style="position: relative; z-index: 2;">
+                        <button class="top-btn" onclick="history.back()" aria-label="Go back" style="background: rgba(255,255,255,0.2); color: white;">
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </button>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="top-btn" id="saveProviderBtn" aria-label="Save Provider" style="background: rgba(255,255,255,0.2); color: white;">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <button class="top-btn" id="shareBtn" aria-label="Share" style="background: rgba(255,255,255,0.2); color: white;">
+                                <i class="fa-regular fa-share-from-square"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="header-content" style="position: relative; z-index: 2;">
+                        <span class="header-category" style="background: ${service.colorInfo?.gradient || 'rgba(255, 255, 255, 0.2)'}; color: white; border: none; text-shadow: 0 1px 2px rgba(0,0,0,0.2);"><i class="fa-solid ${service.icon}"></i> ${service.categoryName || 'Service'}</span>
+                        <h1 class="header-title" style="text-shadow: 0 2px 4px rgba(0,0,0,0.5);">${service.title}</h1>
+                        <div class="header-meta">
+                            <span class="header-meta-item rating">
+                                <i class="fa-solid fa-star"></i> ${service.rating} Review(s)
+                            </span>
+                            <span class="header-meta-item">
+                                <i class="fa-solid fa-users"></i> ${service.availability}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Details -->
+                <div class="detail-body">
+                    <!-- Provider Info -->
+                    <div class="provider-card" style="border-left: 4px solid ${service.colorInfo?.text || '#2563eb'};">
+                        <div class="provider-avatar" style="background: ${service.colorInfo?.text || '#2563eb'};">${providerInitials}</div>
+                        <div class="provider-info">
+                            <h3>Professional Service</h3>
+                            <p><i class="fa-solid fa-certificate" style="color: #3b82f6;"></i> Verified Professional</p>
+                        </div>
+                        <button style="margin-left: auto; width: 40px; height: 40px; border-radius: 50%; border: 1px solid #e2e8f0; background: white; color: var(--primary-color, #2563eb); cursor: pointer;"><i class="fa-solid fa-phone"></i></button>
+                    </div>
+
+                    <!-- Description & Location -->
+                    <h2 class="section-title">About this service</h2>
+                    <p class="description-text">${service.description}</p>
+                    
+                    <div style="background: var(--bg-light); border-radius: 12px; padding: 16px; margin-bottom: 24px; font-size: 0.95rem; color: var(--text-dark); display: flex; flex-direction: column; gap: 8px;">
+                        <div><i class="fa-solid fa-location-dot" style="color: ${service.colorInfo?.text || '#2563eb'}; width: 24px; text-align: center;"></i> <strong>Location:</strong> ${service.location || 'Colombo'}</div>
+                        <div><i class="fa-solid fa-route" style="color: ${service.colorInfo?.text || '#2563eb'}; width: 24px; text-align: center;"></i> <strong>Service Radius:</strong> ${service.serviceRadius || '10 km'}</div>
+                    </div>
+
+                    <!-- Features -->
+                    <h2 class="section-title">What's included</h2>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> High Quality</li>
+                        <li><i class="fa-solid fa-check"></i> Certified Pros</li>
+                        <li><i class="fa-solid fa-check"></i> Timely Service</li>
+                        <li><i class="fa-solid fa-check"></i> 100% Guaranteed</li>
+                    </ul>
+
+                    ${catalogHtml}
+                </div>
+
+                <!-- Sticky Footer -->
+                <div class="sticky-footer">
+                    <div class="price-display">
+                        <span class="price-label">Starting from</span>
+                        <span class="price-value" id="servicePrice" style="color: ${service.colorInfo?.text || '#0f172a'};">${service.price}</span>
+                    </div>
+                    <button class="btn-book" onclick="location.href='booking.html?id=${service.id}'" style="background: ${service.colorInfo?.gradient || 'linear-gradient(135deg, #10b981, #059669)'};">Book Now</button>
+                </div>
+            `;
+
+            // Setup Share Button
+            const shareBtn = document.getElementById('shareBtn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', () => {
+                    const icon = shareBtn.querySelector('i');
+                    icon.className = 'fa-solid fa-check';
+                    setTimeout(() => icon.className = 'fa-regular fa-share-from-square', 2000);
+                });
+            }
+
+            // Setup Save Provider Button
+            const saveBtn = document.getElementById('saveProviderBtn');
+            if (saveBtn) {
+                // Check initial state
+                let savedProviders = [];
+                try {
+                    savedProviders = JSON.parse(localStorage.getItem('savedProviders')) || [];
+                } catch(e) {}
+                
+                let isSaved = savedProviders.some(p => p.id === service.id);
+                const saveIcon = saveBtn.querySelector('i');
+                if (isSaved) {
+                    saveIcon.className = 'fa-solid fa-bookmark';
+                    saveIcon.style.color = '#fbbf24'; // gold
+                }
+                
+                saveBtn.addEventListener('click', () => {
+                    let providers = [];
+                    try {
+                        providers = JSON.parse(localStorage.getItem('savedProviders')) || [];
+                    } catch(e) {}
+                    
+                    const existingIdx = providers.findIndex(p => p.id === service.id);
+                    if (existingIdx > -1) {
+                        // Remove from saved
+                        providers.splice(existingIdx, 1);
+                        saveIcon.className = 'fa-regular fa-bookmark';
+                        saveIcon.style.color = 'white';
+                    } else {
+                        // Add to saved
+                        providers.unshift(service);
+                        saveIcon.className = 'fa-solid fa-bookmark';
+                        saveIcon.style.color = '#fbbf24';
+                    }
+                    localStorage.setItem('savedProviders', JSON.stringify(providers));
+                });
+            }
+        });
+
+
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

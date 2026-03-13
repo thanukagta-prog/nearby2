@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orders - Enhance App Functionality</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-header">
+        <h1>My Orders</h1>
+    </header>
+
+    <!-- Content -->
+    <main class="main-content">
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <button class="tab-item active" data-target="active-orders">Active</button>
+            <button class="tab-item" data-target="completed-orders">Completed</button>
+            <button class="tab-item" data-target="cancelled-orders">Cancelled</button>
+        </div>
+
+        <!-- Orders List -->
+        <section class="orders-list">
+
+            <!-- ACTIVE ORDERS PANE -->
+            <div id="active-orders" class="tab-pane active" style="display: block;">
+                <!-- Active Order Card -->
+                <div class="order-card card">
+                    <div class="order-header">
+                        <div class="order-title-group">
+                            <i class="fa-solid fa-plug-circle-bolt icon-business"></i>
+                            <h3 class="business-name">Power Electric Solutions</h3>
+                        </div>
+                        <span class="status-badge status-confirmed">Confirmed</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <i class="fa-solid fa-screwdriver-wrench text-light"></i>
+                            <span class="detail-text bold-text">Wiring Repair</span>
+                        </div>
+                        <div class="detail-row">
+                            <i class="fa-regular fa-calendar text-light"></i>
+                            <span class="detail-text">Oct 24, 2023 · 10:00 AM</span>
+                        </div>
+                        <div class="detail-row">
+                            <i class="fa-solid fa-location-dot text-light"></i>
+                            <span class="detail-text">124/A, Galle Road, Colombo 03</span>
+                        </div>
+                    </div>
+
+                    <div class="info-boxes">
+                        <div class="info-box success-box">
+                            <i class="fa-regular fa-clock"></i>
+                            <div class="info-text">
+                                <strong>Estimated arrival</strong>
+                                <span>In 15 minutes</span>
+                            </div>
+                        </div>
+                        <div class="info-box gray-box">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                            <div class="info-text">
+                                <strong>Problem Description</strong>
+                                <span>Main circuit breaker keeps tripping. Need urgent check.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="order-actions">
+                        <button class="btn btn-action-secondary" id="btnCancelActive"><i class="fa-solid fa-xmark"></i> Cancel Booking</button>
+                        <button class="btn btn-action-primary"><i class="fa-solid fa-phone"></i> Call</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMPLETED ORDERS PANE -->
+            <div id="completed-orders" class="tab-pane" style="display: none;">
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <!-- Completed Order 1 -->
+                    <div class="order-card card">
+                        <div class="order-header">
+                            <div class="order-title-group">
+                                <i class="fa-solid fa-broom icon-business"
+                                    style="background-color:#D1FAE5; color:#10B981;"></i>
+                                <h3 class="business-name">Spotless Cleaning</h3>
+                            </div>
+                            <span class="status-badge" style="background-color:#D1FAE5; color:#10B981;">Completed</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <i class="fa-solid fa-sparkles text-light"></i>
+                                <span class="detail-text bold-text">Deep Home Cleaning</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-regular fa-calendar text-light"></i>
+                                <span class="detail-text">Oct 12, 2023 · 09:00 AM</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-solid fa-location-dot text-light"></i>
+                                <span class="detail-text">124/A, Galle Road, Colombo 03</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Order 2 -->
+                    <div class="order-card card">
+                        <div class="order-header">
+                            <div class="order-title-group">
+                                <i class="fa-solid fa-snowflake icon-business"
+                                    style="background-color:#DBEAFE; color:#3B82F6;"></i>
+                                <h3 class="business-name">Cool Breeze AC</h3>
+                            </div>
+                            <span class="status-badge" style="background-color:#D1FAE5; color:#10B981;">Completed</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <i class="fa-solid fa-fan text-light"></i>
+                                <span class="detail-text bold-text">AC Gas Re-fill & Service</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-regular fa-calendar text-light"></i>
+                                <span class="detail-text">Sep 28, 2023 · 02:30 PM</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-solid fa-location-dot text-light"></i>
+                                <span class="detail-text">124/A, Galle Road, Colombo 03</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Order 3 -->
+                    <div class="order-card card">
+                        <div class="order-header">
+                            <div class="order-title-group">
+                                <i class="fa-solid fa-shirt icon-business"
+                                    style="background-color:#FEF3C7; color:#F59E0B;"></i>
+                                <h3 class="business-name">Fresh Laundry Services</h3>
+                            </div>
+                            <span class="status-badge" style="background-color:#D1FAE5; color:#10B981;">Completed</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <i class="fa-solid fa-jug-detergent text-light"></i>
+                                <span class="detail-text bold-text">Standard Wash & Fold</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-regular fa-calendar text-light"></i>
+                                <span class="detail-text">Aug 15, 2023 · 11:00 AM</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-solid fa-location-dot text-light"></i>
+                                <span class="detail-text">124/A, Galle Road, Colombo 03</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Order 4 -->
+                    <div class="order-card card">
+                        <div class="order-header">
+                            <div class="order-title-group">
+                                <i class="fa-solid fa-hammer icon-business"
+                                    style="background-color:#FEE2E2; color:#EF4444;"></i>
+                                <h3 class="business-name">Quick Fix Handyman</h3>
+                            </div>
+                            <span class="status-badge" style="background-color:#D1FAE5; color:#10B981;">Completed</span>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <div class="order-details">
+                            <div class="detail-row">
+                                <i class="fa-solid fa-couch text-light"></i>
+                                <span class="detail-text bold-text">Furniture Assembly</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-regular fa-calendar text-light"></i>
+                                <span class="detail-text">Jul 02, 2023 · 04:15 PM</span>
+                            </div>
+                            <div class="detail-row">
+                                <i class="fa-solid fa-location-dot text-light"></i>
+                                <span class="detail-text">124/A, Galle Road, Colombo 03</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CANCELLED ORDERS PANE -->
+            <div id="cancelled-orders" class="tab-pane" style="display: none;">
+                <!-- Placeholder Order Card (Cancelled) -->
+                <div class="order-card card opacity-50">
+                    <div class="order-header">
+                        <div class="order-title-group">
+                            <i class="fa-solid fa-droplet icon-business text-gray"></i>
+                            <h3 class="business-name text-gray">City Plumbers</h3>
+                        </div>
+                        <span class="status-badge status-cancelled">Cancelled</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="order-details">
+                        <div class="detail-row">
+                            <i class="fa-solid fa-wrench text-light"></i>
+                            <span class="detail-text text-gray">Pipe Leakage Fix</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="orders.html" class="nav-item active">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Orders</span>
+        </a>
+        <a href="add_business.html" class="nav-item">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span>Add Business</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- Cancel Confirmation Modal -->
+    <div class="modal-overlay" id="cancelModal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="modal-title">Cancel Service Request?</h3>
+            <p class="modal-text">Are you sure you want to cancel this booking? This action cannot be undone and your
+                provider will be notified. <strong>A cancellation fee of LKR 50.00 will be applied to this action.</strong></p>
+            <div class="modal-actions">
+                <button class="btn btn-modal-keep" id="btnKeepService">Keep Appointment</button>
+                <button class="btn btn-modal-cancel" id="btnConfirmCancel">Cancel Service</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Render Active Bookings
+            const renderActiveBookings = () => {
+                const activePane = document.getElementById('active-orders');
+                if (!activePane) return;
+                
+                let activeBookings = [];
+                try {
+                    activeBookings = JSON.parse(localStorage.getItem('activeBookings')) || [];
+                } catch(e) {}
+                
+                if (activeBookings.length === 0) {
+                    activePane.innerHTML = `
+                        <div class="order-card card opacity-50" style="text-align: center; padding: 40px 20px;">
+                            <i class="fa-solid fa-box-open" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 16px;"></i>
+                            <h3 style="color: var(--text-medium);">No Active Orders</h3>
+                            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 8px;">Your upcoming bookings and deliveries will appear here.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let htmlStr = '';
+                // Render newest first
+                [...activeBookings].reverse().forEach(booking => {
+                    const bgColor = booking.colorInfo?.bg || '#e2e8f0';
+                    const textColor = booking.colorInfo?.text || '#334155';
+                    const timeWindow = booking.time && booking.time !== 'Pending' ? booking.time.charAt(0).toUpperCase() + booking.time.slice(1) : 'Processing Time';
+                    const addressStr = booking.address || 'Address Pending / Pickup';
+                    
+                    htmlStr += `
+                        <div class="order-card card">
+                            <div class="order-header">
+                                <div class="order-title-group">
+                                    <i class="fa-solid ${booking.icon} icon-business" style="background-color: ${bgColor}; color: ${textColor};"></i>
+                                    <div>
+                                        <h3 class="business-name">${booking.title}</h3>
+                                        <div style="font-size: 0.75rem; color: var(--text-light); margin-top: 2px;">Ref: <strong>${booking.orderRef || '#ORD-PNDNG'}</strong></div>
+                                    </div>
+                                </div>
+                                <span class="status-badge status-confirmed" style="background-color: ${bgColor}; color: ${textColor};">Confirmed</span>
+                            </div>
+
+                            <div class="divider"></div>
+
+                            <div class="order-details">
+                                <div class="detail-row">
+                                    <i class="fa-solid fa-clipboard-check text-light"></i>
+                                    <span class="detail-text bold-text">Service Requested</span>
+                                </div>
+                                <div class="detail-row">
+                                    <i class="fa-regular fa-calendar text-light"></i>
+                                    <span class="detail-text">${booking.date} · ${timeWindow}</span>
+                                </div>
+                                <div class="detail-row">
+                                    <i class="fa-solid fa-location-dot text-light"></i>
+                                    <span class="detail-text">${addressStr}</span>
+                                </div>
+                            </div>
+
+                            <div class="info-boxes">
+                                <div class="info-box success-box">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <div class="info-text">
+                                        <strong>Status Updates</strong>
+                                        <span>Provider matched. Awaiting confirmation.</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-actions">
+                                <button class="btn btn-action-secondary" onclick="openCancelModal('${booking.orderRef || booking.id}')"><i class="fa-solid fa-xmark"></i> Cancel Booking</button>
+                                <button class="btn btn-action-primary" style="background: ${textColor};"><i class="fa-solid fa-phone"></i> Contact Provider</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                activePane.innerHTML = `<div style="display: flex; flex-direction: column; gap: 16px; padding-bottom: 24px;">${htmlStr}</div>`;
+            };
+
+            // Render Cancelled Bookings
+            const renderCancelledBookings = () => {
+                const cancelledPane = document.getElementById('cancelled-orders');
+                if (!cancelledPane) return;
+                
+                let cancelledBookings = [];
+                try {
+                    cancelledBookings = JSON.parse(localStorage.getItem('cancelledBookings')) || [];
+                } catch(e) {}
+                
+                if (cancelledBookings.length === 0) {
+                    cancelledPane.innerHTML = `
+                        <div class="order-card card opacity-50" style="text-align: center; padding: 40px 20px;">
+                            <i class="fa-solid fa-ban" style="font-size: 3rem; color: #cbd5e1; margin-bottom: 16px;"></i>
+                            <h3 style="color: var(--text-medium);">No Cancelled Orders</h3>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let htmlStr = cancelledBookings.map(booking => {
+                    return `
+                        <div class="order-card card opacity-50">
+                            <div class="order-header">
+                                <div class="order-title-group">
+                                    <i class="fa-solid ${booking.icon} icon-business text-gray"></i>
+                                    <div>
+                                        <h3 class="business-name text-gray">${booking.title}</h3>
+                                        <div style="font-size: 0.75rem; color: var(--text-light); margin-top: 2px;">Ref: <strong>${booking.orderRef || '#ORD-PNDNG'}</strong></div>
+                                    </div>
+                                </div>
+                                <span class="status-badge status-cancelled">Cancelled</span>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="order-details">
+                                <div class="detail-row">
+                                    <i class="fa-solid fa-wrench text-light"></i>
+                                    <span class="detail-text text-gray">Cancelled by Client</span>
+                                </div>
+                                <div class="detail-row" style="margin-top: 8px;">
+                                    <i class="fa-solid fa-coins text-light"></i>
+                                    <span class="detail-text text-gray" style="color: #ef4444 !important; font-size: 0.85rem;">Cancellation Fee applied: LKR 50.00</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                cancelledPane.innerHTML = `<div style="display: flex; flex-direction: column; gap: 16px; padding-bottom: 24px;">${htmlStr}</div>`;
+            };
+
+            // Initial Renders
+            renderActiveBookings();
+            renderCancelledBookings();
+
+            // Setup Global Cancel Modal Flow
+            window.activeCancelRef = null;
+            
+            window.openCancelModal = function(ref) {
+                window.activeCancelRef = ref;
+                document.getElementById('cancelModal').classList.add('show');
+            };
+
+            // Override global Confirm Cancel Button
+            const customCancelBtn = document.getElementById('btnConfirmCancel');
+            if (customCancelBtn) {
+                // Remove older listeners by cloning
+                const newCancelBtn = customCancelBtn.cloneNode(true);
+                customCancelBtn.parentNode.replaceChild(newCancelBtn, customCancelBtn);
+                
+                newCancelBtn.addEventListener('click', () => {
+                    document.getElementById('cancelModal').classList.remove('show');
+                    if (!window.activeCancelRef) return;
+                    
+                    let activeBookings = JSON.parse(localStorage.getItem('activeBookings')) || [];
+                    let cancelledBookings = JSON.parse(localStorage.getItem('cancelledBookings')) || [];
+                    
+                    // Find the booking
+                    const bookingIndex = activeBookings.findIndex(b => (b.orderRef || b.id) === window.activeCancelRef);
+                    if (bookingIndex > -1) {
+                        const cancelledItem = activeBookings.splice(bookingIndex, 1)[0];
+                        cancelledBookings.unshift(cancelledItem);
+                        
+                        // Limit cancelled to 10 max
+                        if (cancelledBookings.length > 10) {
+                            cancelledBookings = cancelledBookings.slice(0, 10);
+                        }
+                        
+                        localStorage.setItem('activeBookings', JSON.stringify(activeBookings));
+                        localStorage.setItem('cancelledBookings', JSON.stringify(cancelledBookings));
+                        
+                        renderActiveBookings();
+                        renderCancelledBookings();
+                    }
+                    window.activeCancelRef = null;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

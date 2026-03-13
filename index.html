@@ -1,1 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Home - Enhance App Functionality</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+    <!-- HOME VIEW -->
+    <div class="app-view active" data-view="home">
+        <!-- Header -->
+        <header class="home-header">
+            <div class="header-inner">
+                <div class="header-top-row">
+                    <div class="logo-wrapper">
+                        <a href="index.html" style="display: block;">
+                            <img src="images/logo.png" alt="Nearby Logo" class="site-logo">
+                        </a>
+                    </div>
+                    <div class="welcome-text">
+                        <h1>Welcome to Nearby <span class="wave">👋</span></h1>
+                        <p>Find the best local services.</p>
+                    </div>
+                    <div></div> <!-- Grid Spacer -->
+                </div>
+
+                <!-- Custom Location Dropdown -->
+                <div class="custom-location-wrapper">
+                    <button class="location-btn" id="locationBtn">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div class="location-text-group">
+                            <span class="location-label-sm">Current Location</span>
+                            <span class="location-val-main" id="selectedLocation">Colombo 5: Havelock Town</span>
+                        </div>
+                        <i class="fa-solid fa-chevron-right chevron-right"></i>
+                    </button>
+
+                    <!-- Dropdown Menu -->
+                    <div class="custom-dropdown-menu" id="locationMenu">
+                        <div class="dropdown-group-label">Colombo</div>
+                        <div class="dropdown-item" data-val="colombo-1">Colombo 1: Fort</div>
+                        <div class="dropdown-item" data-val="colombo-2">Colombo 2: Slave Island</div>
+                        <div class="dropdown-item" data-val="colombo-3">Colombo 3: Kollupitiya</div>
+                        <div class="dropdown-item" data-val="colombo-4">Colombo 4: Bambalapitiya</div>
+                        <div class="dropdown-item active" data-val="colombo-5">Colombo 5: Havelock Town</div>
+                        <div class="dropdown-item" data-val="colombo-6">Colombo 6: Wellawatta</div>
+                        <div class="dropdown-item" data-val="colombo-7">Colombo 7: Cinnamon Gardens</div>
+                        <div class="dropdown-item" data-val="colombo-8">Colombo 8: Borella</div>
+                        <div class="dropdown-item" data-val="colombo-9">Colombo 9: Dematagoda</div>
+                        <div class="dropdown-item" data-val="colombo-10">Colombo 10: Maradana</div>
+                        <div class="dropdown-item" data-val="colombo-11">Colombo 11: Pettah</div>
+                        <div class="dropdown-item" data-val="colombo-12">Colombo 12: Hulftsdorp</div>
+                        <div class="dropdown-item" data-val="colombo-13">Colombo 13: Kotahena</div>
+                        <div class="dropdown-item" data-val="colombo-14">Colombo 14: Grandpass</div>
+                        <div class="dropdown-item" data-val="colombo-15">Colombo 15: Mattakkuliya</div>
+
+                        <div class="dropdown-group-label mt-2">Greater Colombo Districts</div>
+                        <div class="dropdown-item" data-val="dehiwala">Dehiwala-Mount Lavinia</div>
+                        <div class="dropdown-item" data-val="kotte">Sri Jayawardenepura Kotte</div>
+                        <div class="dropdown-item" data-val="moratuwa">Moratuwa</div>
+                        <div class="dropdown-item" data-val="battaramulla">Battaramulla</div>
+                        <div class="dropdown-item" data-val="maharagama">Maharagama</div>
+                        <div class="dropdown-item" data-val="nugegoda">Nugegoda</div>
+                        <div class="dropdown-item" data-val="homagama">Homagama</div>
+                        <div class="dropdown-item" data-val="kaduwela">Kaduwela</div>
+                        <div class="dropdown-item" data-val="malabe">Malabe</div>
+                        <div class="dropdown-item" data-val="kelaniya">Kelaniya</div>
+                        <div class="dropdown-item" data-val="wattala">Wattala</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Search Bar -->
+            <section class="search-section-standalone">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" placeholder="Search for services..." class="search-input">
+                </div>
+            </section>
+
+            <!-- Special Offer Banner -->
+            <section class="offer-banner orange-gradient">
+                <div class="offer-content">
+                    <h2>Get 20% OFF</h2>
+                    <p>On your first AC repair booking!</p>
+                    <button class="btn btn-book-now">Book Now</button>
+                </div>
+                <div class="offer-image">
+                    <i class="fa-solid fa-snowflake fa-3x"></i>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="categories-section">
+                <div class="section-heading">
+                    <h3>Service Categories</h3>
+                </div>
+
+                <div class="categories-grid">
+                    <!-- Health & Pharmacy -->
+                    <a href="#health-pharmacy" class="category-card" data-view-target="health-pharmacy">
+                        <div class="category-icon cat-health">
+                            <i class="fa-solid fa-staff-snake"></i>
+                        </div>
+                        <span>Health & Pharmacy</span>
+                    </a>
+
+                    <!-- Automotive & Fuel -->
+                    <a href="#automotive-fuel" class="category-card" data-view-target="automotive-fuel">
+                        <div class="category-icon cat-auto">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <span>Automotive & Fuel</span>
+                    </a>
+
+                    <!-- Home & Utilities -->
+                    <a href="#home-utilities" class="category-card" data-view-target="home-utilities">
+                        <div class="category-icon cat-home">
+                            <i class="fa-solid fa-house-chimney-window"></i>
+                        </div>
+                        <span>Home & Utilities</span>
+                    </a>
+
+                    <!-- Retail & Essentials -->
+                    <a href="#retail-essentials" class="category-card" data-view-target="retail-essentials">
+                        <div class="category-icon cat-retail">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <span>Retail & Essentials</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Featured Services -->
+            <section class="featured-section">
+                <div class="section-heading">
+                    <h3>Featured Services</h3>
+                    <a href="services.html" class="view-all">See All</a>
+                </div>
+
+                <div class="featured-list" id="homeFeaturedServices">
+                    <!-- Dynamically populated from data.js via script at the bottom -->
+                </div>
+            </section>
+
+            <!-- Why Choose Nearby -->
+            <section class="why-choose-section">
+                <div class="why-choose-card">
+                    <h3 class="why-choose-title">Why Choose Nearby?</h3>
+
+                    <div class="why-row">
+                        <div class="why-icon-box">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="why-text">
+                            <strong>Fast Response</strong>
+                            <p>Get connected with professionals in minutes</p>
+                        </div>
+                    </div>
+
+                    <div class="why-row">
+                        <div class="why-icon-box">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="why-text">
+                            <strong>Verified Providers</strong>
+                            <p>All our partners are background checked</p>
+                        </div>
+                    </div>
+
+                    <div class="why-row">
+                        <div class="why-icon-box">
+                            <i class="fa-regular fa-heart"></i>
+                        </div>
+                        <div class="why-text">
+                            <strong>24/7 Support</strong>
+                            <p>We're here to help you anytime, anywhere</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section mb-32">
+                <div class="stat-box">
+                    <div class="stat-number color-blue">500+</div>
+                    <div class="stat-text">Service Providers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number color-green">10k+</div>
+                    <div class="stat-text">Happy Customers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number color-orange">4.8</div>
+                    <div class="stat-text">Average Rating</div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- HEALTH & PHARMACY VIEW -->
+    <div class="app-view" data-view="health-pharmacy">
+        <header class="subpage-header subpage-health">
+            <div class="header-inner subpage-inner">
+                <button class="subpage-back" type="button" data-back aria-label="Back to home">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="subpage-title">
+                    <h1>Health & Pharmacy</h1>
+                    <p>Choose a subcategory</p>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <section class="subcategories-section">
+                <div class="subcategories-grid">
+                    <a href="services_list.html?category=doctor" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-user-doctor"></i></div>
+                        <span>Doctor</span>
+                    </a>
+                    <a href="services_list.html?category=pharmacy" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-pills"></i></div>
+                        <span>Pharmacy</span>
+                    </a>
+                    <a href="services_list.html?category=lab-tests" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-flask-vial"></i></div>
+                        <span>Lab Tests</span>
+                    </a>
+                    <a href="services_list.html?category=dental" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-tooth"></i></div>
+                        <span>Dental</span>
+                    </a>
+                    <a href="services_list.html?category=eye-care" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-eye"></i></div>
+                        <span>Eye Care</span>
+                    </a>
+                    <a href="services_list.html?category=physiotherapy" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-person-walking"></i></div>
+                        <span>Physiotherapy</span>
+                    </a>
+                    <a href="services_list.html?category=nursing" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-user-nurse"></i></div>
+                        <span>Nursing</span>
+                    </a>
+                    <a href="services_list.html?category=medical-equipment" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-kit-medical"></i></div>
+                        <span>Medical Equipment</span>
+                    </a>
+                    <a href="services_list.html?category=ambulance" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-truck-medical"></i></div>
+                        <span>Ambulance</span>
+                    </a>
+                    <a href="services_list.html?category=wellness" class="subcategory-card">
+                        <div class="subcategory-icon cat-health"><i class="fa-solid fa-dumbbell"></i></div>
+                        <span>Wellness</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- AUTOMOTIVE & FUEL VIEW -->
+    <div class="app-view" data-view="automotive-fuel">
+        <header class="subpage-header subpage-auto">
+            <div class="header-inner subpage-inner">
+                <button class="subpage-back" type="button" data-back aria-label="Back to home">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="subpage-title">
+                    <h1>Automotive & Fuel</h1>
+                    <p>Choose a subcategory</p>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <section class="subcategories-section">
+                <div class="subcategories-grid">
+                    <a href="services_list.html?category=fuel" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-gas-pump"></i></div>
+                        <span>Fuel</span>
+                    </a>
+                    <a href="services_list.html?category=car-wash" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+                        <span>Car Wash</span>
+                    </a>
+                    <a href="services_list.html?category=tires" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-circle-dot"></i></div>
+                        <span>Tires</span>
+                    </a>
+                    <a href="services_list.html?category=battery" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-car-battery"></i></div>
+                        <span>Battery</span>
+                    </a>
+                    <a href="services_list.html?category=oil-change" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-oil-can"></i></div>
+                        <span>Oil Change</span>
+                    </a>
+                    <a href="services_list.html?category=repair" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+                        <span>Repair</span>
+                    </a>
+                    <a href="services_list.html?category=auto-parts" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-gears"></i></div>
+                        <span>Auto Parts</span>
+                    </a>
+                    <a href="services_list.html?category=towing" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-truck"></i></div>
+                        <span>Towing</span>
+                    </a>
+                    <a href="services_list.html?category=inspection" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-list-check"></i></div>
+                        <span>Inspection</span>
+                    </a>
+                    <a href="services_list.html?category=ev-charging" class="subcategory-card">
+                        <div class="subcategory-icon cat-auto"><i class="fa-solid fa-charging-station"></i></div>
+                        <span>EV Charging</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- HOME & UTILITIES VIEW -->
+    <div class="app-view" data-view="home-utilities">
+        <header class="subpage-header subpage-home">
+            <div class="header-inner subpage-inner">
+                <button class="subpage-back" type="button" data-back aria-label="Back to home">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="subpage-title">
+                    <h1>Home & Utilities</h1>
+                    <p>Choose a subcategory</p>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <section class="subcategories-section">
+                <div class="subcategories-grid">
+                    <a href="services_list.html?category=electrician" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-bolt"></i></div>
+                        <span>Electrician</span>
+                    </a>
+                    <a href="services_list.html?category=plumbing" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-faucet-drip"></i></div>
+                        <span>Plumbing</span>
+                    </a>
+                    <a href="services_list.html?category=ac-repair" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-wind"></i></div>
+                        <span>A/C Repair</span>
+                    </a>
+                    <a href="services_list.html?category=cleaning" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-broom"></i></div>
+                        <span>Cleaning</span>
+                    </a>
+                    <a href="services_list.html?category=pest-control" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-bug"></i></div>
+                        <span>Pest Control</span>
+                    </a>
+                    <a href="services_list.html?category=internet-tv" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-wifi"></i></div>
+                        <span>Internet & TV</span>
+                    </a>
+                    <a href="services_list.html?category=gas" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-fire-flame-simple"></i></div>
+                        <span>Gas</span>
+                    </a>
+                    <a href="services_list.html?category=water" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-droplet"></i></div>
+                        <span>Water</span>
+                    </a>
+                    <a href="services_list.html?category=painting" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-paint-roller"></i></div>
+                        <span>Painting</span>
+                    </a>
+                    <a href="services_list.html?category=appliances" class="subcategory-card">
+                        <div class="subcategory-icon cat-home"><i class="fa-solid fa-toolbox"></i></div>
+                        <span>Appliances</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- RETAIL & ESSENTIALS VIEW -->
+    <div class="app-view" data-view="retail-essentials">
+        <header class="subpage-header subpage-retail">
+            <div class="header-inner subpage-inner">
+                <button class="subpage-back" type="button" data-back aria-label="Back to home">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <div class="subpage-title">
+                    <h1>Retail & Essentials</h1>
+                    <p>Choose a subcategory</p>
+                </div>
+            </div>
+        </header>
+        <main class="main-content">
+            <section class="subcategories-section">
+                <div class="subcategories-grid">
+                    <a href="services_list.html?category=supermarkets" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-store"></i></div>
+                        <span>Supermarkets</span>
+                    </a>
+                    <a href="services_list.html?category=groceries" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-bag-shopping"></i></div>
+                        <span>Groceries</span>
+                    </a>
+                    <a href="services_list.html?category=restaurants" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-utensils"></i></div>
+                        <span>Restaurants</span>
+                    </a>
+                    <a href="services_list.html?category=cafe-bakery" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-mug-hot"></i></div>
+                        <span>Café & Bakery</span>
+                    </a>
+                    <a href="services_list.html?category=clothing" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-shirt"></i></div>
+                        <span>Clothing</span>
+                    </a>
+                    <a href="services_list.html?category=electronics" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-laptop"></i></div>
+                        <span>Electronics</span>
+                    </a>
+                    <a href="services_list.html?category=stationery" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-book"></i></div>
+                        <span>Stationery</span>
+                    </a>
+                    <a href="services_list.html?category=baby-kids" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-baby"></i></div>
+                        <span>Baby & Kids</span>
+                    </a>
+                    <a href="services_list.html?category=pet-supplies" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-paw"></i></div>
+                        <span>Pet Supplies</span>
+                    </a>
+                    <a href="services_list.html?category=hardware" class="subcategory-card">
+                        <div class="subcategory-icon cat-retail"><i class="fa-solid fa-hammer"></i></div>
+                        <span>Hardware</span>
+                    </a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="orders.html" class="nav-item">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Orders</span>
+        </a>
+        <a href="add_business.html" class="nav-item">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span>Add Business</span>
+        </a>
+        <a href="profile.html" class="nav-item">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Dynamically insert top 3 featured services on HOME view
+        document.addEventListener('DOMContentLoaded', () => {
+            const featuredContainer = document.getElementById('homeFeaturedServices');
+            if (featuredContainer && window.appData && window.appData.featuredServices) {
+                const topFeatured = window.appData.featuredServices.slice(0, 3);
+
+                let html = '';
+                topFeatured.forEach(srv => {
+                    html += `
+                    <a href="service_detail.html?id=${srv.id}" class="service-card card">
+                        <div class="service-image-placeholder" style="background-color: var(--bg-light); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; border: 1px solid var(--icon-bg-gray);">
+                            <img src="${srv.image}" alt="${srv.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        </div>
+                        <div class="service-info">
+                            <div class="service-header">
+                                <h4>${srv.title}</h4>
+                                <div class="rating-badge">
+                                    <i class="fa-solid fa-star"></i> ${srv.rating}
+                                </div>
+                            </div>
+                            <p class="service-type">${srv.categoryName || 'Service'}</p>
+                            <div class="availability">
+                                <span class="dot" style="background: ${srv.colorInfo.text};"></span> ${srv.availability}
+                            </div>
+                        </div>
+                    </a>
+                    `;
+                });
+
+                featuredContainer.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Profile - Enhance App Functionality</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="top-header">
+        <h1>Profile</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Profile Info Card -->
+        <section class="card profile-card">
+            <div class="profile-header">
+                <label for="profileImgUpload" class="avatar avatar-upload" style="cursor: pointer; position: relative;">
+                    <i class="fa-solid fa-user"></i>
+                    <div class="avatar-edit-overlay"
+                        style="position: absolute; bottom: 0; right: 0; background: var(--primary-blue); color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; border: 2px solid white;">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+                </label>
+                <input type="file" id="profileImgUpload" accept="image/*" style="display: none;">
+                <div class="profile-info">
+                    <h2 class="profile-name">Kamal Perera</h2>
+                    <p class="profile-email">kamal@example.com</p>
+                    <p class="profile-location"><i class="fa-solid fa-location-dot"></i> Colombo, Sri Lanka</p>
+                </div>
+            </div>
+            <button class="btn btn-edit-profile" id="btnEditProfile">Edit Profile</button>
+        </section>
+
+        <!-- Booking History (Stats) -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value text-blue">12</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value text-yellow">2</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value text-gray">1</div>
+                <div class="stat-label">Cancelled</div>
+            </div>
+        </section>
+
+        <!-- Action Settings List -->
+        <section class="action-list">
+            <a href="#" class="action-item" id="linkSavedAddresses">
+                <div class="action-icon icon-blue">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <div class="action-content">
+                    <h3>Saved Addresses</h3>
+                    <p>Manage your home, work addresses</p>
+                </div>
+                <i class="fa-solid fa-chevron-right action-arrow"></i>
+            </a>
+
+            <a href="#" class="action-item" id="linkSavedProviders">
+                <div class="action-icon icon-pink">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="action-content">
+                    <h3>Saved Providers</h3>
+                    <p>Your favorite service providers</p>
+                </div>
+                <i class="fa-solid fa-chevron-right action-arrow"></i>
+            </a>
+
+            <a href="#" class="action-item" id="linkNotifications">
+                <div class="action-icon icon-yellow">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <div class="action-content">
+                    <h3>Notifications</h3>
+                    <p>Alerts, promos, and offers</p>
+                </div>
+                <i class="fa-solid fa-chevron-right action-arrow"></i>
+            </a>
+
+            <a href="#" class="action-item" id="linkSettings">
+                <div class="action-icon icon-gray">
+                    <i class="fa-solid fa-gear"></i>
+                </div>
+                <div class="action-content">
+                    <h3>Settings</h3>
+                    <p>App preferences and account settings</p>
+                </div>
+                <i class="fa-solid fa-chevron-right action-arrow"></i>
+            </a>
+        </section>
+
+        <!-- Help & Support -->
+        <section class="help-support">
+            <h3 class="section-title">Help & Support</h3>
+            <div class="help-links card">
+                <a href="#" class="help-link" id="linkHelpCenter">
+                    <span>Help Center</span>
+                    <i class="fa-solid fa-chevron-right action-arrow"></i>
+                </a>
+                <div class="divider"></div>
+                <a href="#" class="help-link" id="linkTerms">
+                    <span>Terms & Conditions</span>
+                    <i class="fa-solid fa-chevron-right action-arrow"></i>
+                </a>
+                <div class="divider"></div>
+                <a href="#" class="help-link" id="linkPrivacy">
+                    <span>Privacy Policy</span>
+                    <i class="fa-solid fa-chevron-right action-arrow"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Logout -->
+        <section class="logout-section">
+            <button class="btn btn-logout" id="logoutBtn">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
+            </button>
+        </section>
+
+        <!-- Notifications Modal -->
+        <div class="modal-overlay" id="notificationsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Notifications</h2>
+                    <button class="btn-close-modal" id="btnCloseNotifications"><i
+                            class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="notification-list"
+                    style="display: flex; flex-direction: column; gap: 12px; text-align: left;">
+                    <div class="notification-item"
+                        style="display: flex; gap: 12px; padding: 12px; background: #FFF7ED; border-radius: 8px; border-left: 4px solid #F97316;">
+                        <div style="color: #F97316; font-size: 1.25rem;"><i class="fa-solid fa-percent"></i></div>
+                        <div>
+                            <h4 style="font-size: 0.9375rem; margin-bottom: 2px;">Flash Sale Weekend!</h4>
+                            <p style="font-size: 0.8125rem; color: #4B5563;">Get 15% off any plumbing service booked
+                                this weekend.</p>
+                            <span style="font-size: 0.7rem; color: #9CA3AF; margin-top: 4px; display: block;">2 hours
+                                ago</span>
+                        </div>
+                    </div>
+                    <div class="notification-item"
+                        style="display: flex; gap: 12px; padding: 12px; background: #EFF6FF; border-radius: 8px; border-left: 4px solid #3B82F6;">
+                        <div style="color: #3B82F6; font-size: 1.25rem;"><i class="fa-regular fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 0.9375rem; margin-bottom: 2px;">Booking Reminder</h4>
+                            <p style="font-size: 0.8125rem; color: #4B5563;">Your AC repair appointment is confirmed for
+                                tomorrow at 10 AM.</p>
+                            <span
+                                style="font-size: 0.7rem; color: #9CA3AF; margin-top: 4px; display: block;">Yesterday</span>
+                        </div>
+                    </div>
+                    <div class="notification-item"
+                        style="display: flex; gap: 12px; padding: 12px; background: #F3F4F6; border-radius: 8px;">
+                        <div style="color: #6B7280; font-size: 1.25rem;"><i class="fa-solid fa-bullhorn"></i></div>
+                        <div>
+                            <h4 style="font-size: 0.9375rem; margin-bottom: 2px;">New Feature Added</h4>
+                            <p style="font-size: 0.8125rem; color: #4B5563;">You can now tip your service providers
+                                directly through the app!</p>
+                            <span style="font-size: 0.7rem; color: #9CA3AF; margin-top: 4px; display: block;">Oct
+                                20</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Profile Modal -->
+        <div class="modal-overlay" id="editProfileModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Edit Profile</h2>
+                    <button class="btn-close-modal" id="btnCloseEditProfile"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <form id="editProfileForm" class="profile-form">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" value="Kamal" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" value="Perera" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone Number</label>
+                        <input type="tel" id="phoneNumber" value="+94 77 123 4567" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address</label>
+                        <input type="email" id="emailAddress" value="kamal@example.com" class="form-input" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary modal-btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Saved Providers Modal -->
+        <div class="modal-overlay" id="savedProvidersModal">
+            <div class="modal-content">
+                <div class="modal-header" style="position: sticky; top: 0; background: var(--bg-white); padding-bottom: 8px; z-index: 2;">
+                    <h2>Saved Providers</h2>
+                    <button class="btn-close-modal" id="btnCloseSavedProviders"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="savedProvidersList" style="display: flex; flex-direction: column; gap: 12px; max-height: 60vh; overflow-y: auto;">
+                    <!-- Dynamically populated via script -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State Modal (Reusable) -->
+        <div class="modal-overlay" id="emptyStateModal">
+            <div class="modal-content text-center">
+                <div class="modal-icon text-gray">
+                    <i class="fa-solid fa-box-open" style="font-size: 3rem; margin-bottom: 16px;"></i>
+                </div>
+                <h2 id="emptyStateTitle" style="margin-bottom: 8px;">Nothing Here</h2>
+                <p id="emptyStateMessage" class="text-light" style="margin-bottom: 24px;">This section is currently
+                    empty.</p>
+                <button class="btn btn-primary modal-btn" id="btnCloseEmptyState">Got it</button>
+            </div>
+        </div>
+
+        <!-- Settings Modal -->
+        <div class="modal-overlay" id="settingsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <button class="btn-close-modal" id="btnCloseSettings"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item" id="btnOpenSecurity" style="cursor: pointer;">
+                        <div class="settings-info">
+                            <h4>Account Security</h4>
+                            <p>Password, 2FA</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-light"></i>
+                    </div>
+                    <div class="settings-item" id="btnOpenNotificationPrefs" style="cursor: pointer;">
+                        <div class="settings-info">
+                            <h4>Notification Preferences</h4>
+                            <p>Email, Push alerts</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-light"></i>
+                    </div>
+                    <div class="settings-item" id="btnOpenPrivacy" style="cursor: pointer;">
+                        <div class="settings-info">
+                            <h4>Privacy</h4>
+                            <p>Data sharing, Activity</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-light"></i>
+                    </div>
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>Dark Mode</h4>
+                            <p>Toggle app theme</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <label class="switch" style="width: 40px; height: 22px;">
+                                <input type="checkbox" id="btnDarkModeToggle">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-item" id="btnOpenLanguage" style="cursor: pointer;">
+                        <div class="settings-info">
+                            <h4>Language</h4>
+                            <p id="currentLanguageDisplay">English (US)</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-light"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Security Sub-Modal -->
+        <div class="modal-overlay" id="securityModal" style="z-index: 10001;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Account Security</h2>
+                    <button class="btn-close-modal" id="btnCloseSecurity"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <form class="profile-form"
+                    onsubmit="event.preventDefault(); alert('Security settings updated.'); document.getElementById('securityModal').classList.remove('show');">
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input type="password" placeholder="••••••••" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" placeholder="Enter new password" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input type="password" placeholder="Confirm new password" class="form-input">
+                    </div>
+                    <div style="height: 1px; background: #E5E7EB; margin: 8px 0;"></div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; text-align: left;">
+                        <div>
+                            <h4 style="font-size: 0.9375rem; color: var(--text-dark); margin-bottom: 2px;">Two-Factor
+                                Auth</h4>
+                            <p style="font-size: 0.75rem; color: var(--text-light);">Require SMS code on login</p>
+                        </div>
+                        <label class="switch" style="width: 40px; height: 22px;">
+                            <input type="checkbox" checked>
+                            <span class="slider round" style="box-shadow:none;"></span>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary modal-btn">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Notification Preferences Sub-Modal -->
+        <div class="modal-overlay" id="notificationPrefsModal" style="z-index: 10001;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Notification Prefs</h2>
+                    <button class="btn-close-modal" id="btnCloseNotificationPrefs"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>Push Notifications</h4>
+                            <p>Alerts on your device</p>
+                        </div>
+                        <label class="switch" style="width: 40px; height: 22px;">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>Email Updates</h4>
+                            <p>News & promotional offers</p>
+                        </div>
+                        <label class="switch" style="width: 40px; height: 22px;">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>SMS Alerts</h4>
+                            <p>Booking confirmations</p>
+                        </div>
+                        <label class="switch" style="width: 40px; height: 22px;">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Settings Sub-Modal -->
+        <div class="modal-overlay" id="privacySettingsModal" style="z-index: 10001;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Privacy Settings</h2>
+                    <button class="btn-close-modal" id="btnClosePrivacySettings"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <div class="settings-list">
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>Share Data with Partners</h4>
+                            <p>Allow trusted partners to provide offers</p>
+                        </div>
+                        <label class="switch" style="width: 40px; height: 22px;">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="settings-item">
+                        <div class="settings-info">
+                            <h4>Search Visibility</h4>
+                            <p>Allow others to find your profile</p>
+                        </div>
+                        <label class="switch" style="width: 40px; height: 22px;">
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Sub-Modal -->
+        <div class="modal-overlay" id="languageModal" style="z-index: 10001;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Language</h2>
+                    <button class="btn-close-modal" id="btnCloseLanguage"><i
+                            class="fa-solid fa-chevron-left"></i></button>
+                </div>
+                <div class="settings-list" style="text-align: left;">
+                    <label class="settings-item" style="cursor: pointer; justify-content: flex-start; gap: 12px;">
+                        <input type="radio" name="language" value="English (US)" checked
+                            style="accent-color: var(--primary-blue); transform: scale(1.2);">
+                        <div class="settings-info" style="flex: 1;">
+                            <h4 style="margin: 0;">English (US)</h4>
+                        </div>
+                    </label>
+                    <label class="settings-item" style="cursor: pointer; justify-content: flex-start; gap: 12px;">
+                        <input type="radio" name="language" value="Sinhala"
+                            style="accent-color: var(--primary-blue); transform: scale(1.2);">
+                        <div class="settings-info" style="flex: 1;">
+                            <h4 style="margin: 0;">Sinhala (සිංහල)</h4>
+                        </div>
+                    </label>
+                    <label class="settings-item" style="cursor: pointer; justify-content: flex-start; gap: 12px;">
+                        <input type="radio" name="language" value="Tamil"
+                            style="accent-color: var(--primary-blue); transform: scale(1.2);">
+                        <div class="settings-info" style="flex: 1;">
+                            <h4 style="margin: 0;">Tamil (தமிழ்)</h4>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Center Modal -->
+        <div class="modal-overlay" id="helpCenterModal">
+            <div class="modal-content" style="text-align: left;">
+                <div class="modal-header">
+                    <h2>Help Center</h2>
+                    <button class="btn-close-modal" id="btnCloseHelpCenter"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <input type="text" placeholder="Search for help..." class="form-input">
+                </div>
+                <h4 style="font-size: 0.9375rem; color: var(--text-dark); margin-bottom: 12px;">Frequently Asked
+                    Questions</h4>
+                <div class="settings-list">
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px;">
+                        <h5 style="margin-bottom: 4px;">How do I report an issue with a provider?</h5>
+                        <p style="font-size: 0.8125rem; color: var(--text-medium);">Go to Orders > select the specific
+                            order > click "Report Issue" to contact our support team immediately.</p>
+                    </div>
+                    <div style="padding: 12px; background: var(--bg-light); border-radius: 8px;">
+                        <h5 style="margin-bottom: 4px;">How does pricing work?</h5>
+                        <p style="font-size: 0.8125rem; color: var(--text-medium);">Providers set their own rates.
+                            You'll see an estimated starting price before booking.</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary modal-btn mt-16"><i class="fa-solid fa-envelope"></i> Contact
+                    Support</button>
+            </div>
+        </div>
+
+        <!-- Terms & Conditions Modal -->
+        <div class="modal-overlay" id="termsModal">
+            <div class="modal-content" style="text-align: left; max-height: 80vh;">
+                <div class="modal-header"
+                    style="position: sticky; top: 0; background: var(--bg-white); padding-bottom: 8px; z-index: 2;">
+                    <h2>Terms & Conditions</h2>
+                    <button class="btn-close-modal" id="btnCloseTerms"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div
+                    style="font-size: 0.8125rem; color: var(--text-medium); line-height: 1.6; padding-right: 8px; overflow-y: auto;">
+                    <strong>1. User Accounts & Eligibility</strong><br>
+                    Welcome to Nearby. By using our application, you agree to these terms. You must be at least 18 years
+                    old to create an account and request or provide services.<br><br>
+                    <strong>2. Service Scope & Usage Rules</strong><br>
+                    Nearby connects users with independent service professionals. We do not employ the service
+                    providers. Users are strictly prohibited from paying providers in cash outside the app without
+                    logging the transaction.<br><br>
+                    <strong>3. Payments & Fees</strong><br>
+                    All payments must be processed securely through the platform. A standard 5% service fee applies to
+                    all completed transactions. Cancellations within 2 hours of an appointment may incur a fee.<br><br>
+                    <strong>4. Limitation of Liability</strong><br>
+                    Nearby acts solely as an intermediary. We perform basic background checks, but we are not liable for
+                    any damages, poor workmanship, or disputes arising directly from the service provision.
+                </div>
+            </div>
+        </div>
+
+        <!-- Privacy Policy Modal -->
+        <div class="modal-overlay" id="privacyModal">
+            <div class="modal-content" style="text-align: left; max-height: 80vh;">
+                <div class="modal-header"
+                    style="position: sticky; top: 0; background: var(--bg-white); padding-bottom: 8px; z-index: 2;">
+                    <h2>Privacy Policy</h2>
+                    <button class="btn-close-modal" id="btnClosePrivacy"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div
+                    style="font-size: 0.8125rem; color: var(--text-medium); line-height: 1.6; padding-right: 8px; overflow-y: auto;">
+                    <strong>1. Information We Collect</strong><br>
+                    We collect details you provide such as your name, email, phone number, and physical addresses (for
+                    service delivery). We also securely store your payment methodologies.<br><br>
+                    <strong>2. How We Use Your Data</strong><br>
+                    Your data is solely used to facilitate matches between you and local service providers, process
+                    payments, and send you critical platform updates. We do not sell your personal data to
+                    advertisers.<br><br>
+                    <strong>3. Data Sharing & Disclosure</strong><br>
+                    We only share your address and contact information with the specific service provider you have
+                    booked, and only for the duration required to complete the requested service.<br><br>
+                    <strong>4. Data Security</strong><br>
+                    All communications are encrypted using standard SSL, and sensitive payment data is completely
+                    handled by our PCI-compliant third-party processor.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="orders.html" class="nav-item">
+            <i class="fa-solid fa-clipboard-list"></i>
+            <span>Orders</span>
+        </a>
+        <a href="add_business.html" class="nav-item">
+            <i class="fa-solid fa-plus-circle"></i>
+            <span>Add Business</span>
+        </a>
+        <a href="profile.html" class="nav-item active">
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
